@@ -1,0 +1,130 @@
+import getRandomFromArray from './utils/getRandomFromArray.js'
+import removeDuplicatesFromArray from './utils/removeDuplicatesFromArray.js'
+import words from './utils/words.js'
+
+// get DOM elements
+const wordEl = document.querySelector('#word-guess')
+const inputEl = document.querySelector('#word-input')
+const timeEl = document.querySelector('#time')
+const difficultyEl = document.querySelector('#difficulty')
+const bestScoreEl = document.querySelector('#best-score')
+const wordCountEl = document.querySelector('#word-count')
+const modal = document.querySelector('#start-game-prompt')
+const modalP = document.querySelector('#start-game-prompt p')
+
+const scores = JSON.parse(localStorage.getItem('scores')) || [0]
+const difficulties = ['Easy', 'Moderate', 'Hard']
+
+let interval = null
+let timeSeconds = 10
+let difficulty = getRandomFromArray(difficulties)
+let wordCount = 0
+let wordToGuess
+
+function updateTime() {
+  timeEl.innerText = timeSeconds
+}
+
+function updateWord() {
+  wordEl.innerText = wordToGuess
+}
+
+function updateDifficulty() {
+  difficultyEl.innerText = 'Difficulty: ' + difficulty
+}
+
+function updateWordCount() {
+  wordCountEl.innerText = 'Word count: ' + wordCount
+}
+
+function resetInterval() {
+  if (interval) {
+    clearInterval(interval)
+    interval = null
+  }
+}
+
+function reset() {
+  wordCount = 0
+  timeSeconds = 11
+  difficulty = 'Easy'
+  updateWordCount()
+}
+
+function lose() {
+  resetInterval()
+
+  modal.style.display = 'block'
+  modalP.innerText = 'Your score is ' + wordCount
+
+  inputEl.value = ''
+
+  scores.push(wordCount)
+
+  reset()
+
+  localStorage.setItem(
+    'scores',
+    JSON.stringify(removeDuplicatesFromArray(scores))
+  )
+}
+
+function startTime() {
+  function countdown() {
+    timeSeconds--
+    updateTime()
+
+    if (timeSeconds <= 0) {
+      lose()
+    }
+  }
+
+  interval = setInterval(countdown, 1000)
+}
+
+function nextWord() {
+  wordCount++
+  updateWordCount()
+  resetInterval()
+
+  inputEl.value = ''
+
+  difficulty = getRandomFromArray(difficulties)
+
+  timeSeconds =
+    difficulty === 'Easy'
+      ? timeSeconds + 3
+      : difficulty === 'Moderate'
+      ? timeSeconds + 2
+      : timeSeconds + 1
+
+  wordToGuess = getRandomFromArray(words[difficulty])
+
+  updateDifficulty()
+  updateWord()
+  startTime()
+  updateTime()
+}
+
+updateTime()
+
+function startGame() {
+  wordToGuess = getRandomFromArray(words[difficulty])
+
+  bestScoreEl.innerText = 'Best: ' + Math.max(...scores)
+
+  inputEl.value = ''
+
+  resetInterval()
+  updateWord()
+  startTime()
+  updateDifficulty()
+}
+
+inputEl.addEventListener('input', (event) => {
+  if (event.target.value.toLowerCase() === wordToGuess.toLowerCase()) {
+    nextWord()
+  }
+})
+
+export default startGame
