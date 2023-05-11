@@ -13,13 +13,13 @@ body {
   min-height: 100vh;
   width: 100%;
   color: white;
-  background-color: #504C4C ;
+  background-color: #504c4c;
 }
 
 header {
   width: 100%;
   height: 100px;
-  background-color: #373131 ;
+  background-color: #373131;
   font-family: 'Prompt', sans-serif;
   font-size: 2rem;
   color: white;
@@ -57,7 +57,7 @@ header {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #564F4D;
+  background-color: #564f4d;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ header {
   display: block;
   border-radius: 16px;
   margin: 16px auto;
-  background-color: #E37F7F;
+  background-color: #e37f7f;
   width: 70%;
   font-family: 'Lexend', sans-serif;
   font-size: 1.2rem;
@@ -102,13 +102,13 @@ header {
 }
 
 #start-game:hover {
-  background-color: #E91F1F ;
+  background-color: #e91f1f;
 }
 
 #game {
   border-radius: 20px;
   background-color: #272626;
-  color: #FFF0EC ;
+  color: #fff0ec;
   text-align: center;
   width: 540px;
   height: 220px;
@@ -145,6 +145,15 @@ header {
 #word-input:focus {
   border: none;
   outline: none;
+}
+
+a {
+  color: white;
+}
+
+footer {
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 600px) {
