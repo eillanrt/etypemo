@@ -55,7 +55,7 @@ function lose() {
   resetInterval()
 
   modal.style.display = 'block'
-  modalP.innerText = 'Your score is ' + wordCount
+  modalP.innerText = 'Your score is ' + wordCount + '\nPress ENTER to continue'
 
   inputEl.value = ''
 
