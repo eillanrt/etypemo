@@ -114,6 +114,7 @@ function startGame() {
   bestScoreEl.innerText = 'Best: ' + Math.max(...scores)
 
   inputEl.value = ''
+  inputEl.focus()
 
   resetInterval()
   updateWord()
