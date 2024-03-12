@@ -1,4 +1,4 @@
-# eTypeKita
+# eTypeMo
 
 A simple game for your browser.
 
