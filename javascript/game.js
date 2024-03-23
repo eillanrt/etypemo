@@ -1,5 +1,8 @@
-import getRandomFromArray from './utils/getRandomFromArray.js'
 import words from './utils/words.js'
+
+function _getRandomFromArray(array) {
+  return array[Math.floor(Math.random() * array.length)]
+}
 
 // get DOM elements
 const wordEl = document.querySelector('#word-guess')
@@ -16,7 +19,7 @@ const difficulties = ['Easy', 'Moderate', 'Hard']
 
 let interval = null
 let timeSeconds = 10
-let difficulty = getRandomFromArray(difficulties)
+let difficulty = _getRandomFromArray(difficulties)
 let wordCount = 0
 let wordToGuess
 
@@ -91,7 +94,7 @@ function nextWord() {
 
   inputEl.value = ''
 
-  difficulty = getRandomFromArray(difficulties)
+  difficulty = _getRandomFromArray(difficulties)
 
   timeSeconds =
     difficulty === 'Easy'
@@ -100,7 +103,7 @@ function nextWord() {
       ? timeSeconds + 2
       : timeSeconds + 1
 
-  wordToGuess = getRandomFromArray(words[difficulty])
+  wordToGuess = _getRandomFromArray(words[difficulty])
 
   updateDifficulty()
   updateWord()
@@ -111,7 +114,7 @@ function nextWord() {
 updateTime()
 
 function startGame() {
-  wordToGuess = getRandomFromArray(words[difficulty])
+  wordToGuess = _getRandomFromArray(words[difficulty])
 
   bestScoreEl.innerText = 'Best: ' + Math.max(...scores)
 

@@ -10,6 +10,14 @@ const words = {
     'tree',
     'water',
     'world',
+    'happy',
+    'milk',
+    'sun',
+    'car',
+    'bird', // Added more easy words
+    'color',
+    'food',
+    'friend',
   ],
   Moderate: [
     'beautiful',
@@ -22,6 +30,14 @@ const words = {
     'intelligent',
     'interesting',
     'language',
+    'adventure',
+    'celebrate',
+    'different',
+    'friendship',
+    'knowledge', // Added more moderate words
+    'music',
+    'nature',
+    'science',
   ],
   Hard: [
     'bureaucracy',
@@ -34,6 +50,14 @@ const words = {
     'meticulous',
     'photosynthesis',
     'surreptitious',
+    'archaeology',
+    'equilibrium',
+    'philosophy',
+    'typography',
+    'ambiguity', // Added more hard words
+    'constellation',
+    'hypothesis',
+    'metaphor',
   ],
 }
 
