@@ -123,7 +123,7 @@ function startGame() {
 }
 
 inputEl.addEventListener('input', (event) => {
-  if (event.target.value.toLowerCase() === wordToGuess.toLowerCase()) {
+  if (event.target.value.toLowerCase().trim() === wordToGuess.toLowerCase()) {
     nextWord()
   }
 })
