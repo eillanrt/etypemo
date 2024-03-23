@@ -1,5 +1,4 @@
 import getRandomFromArray from './utils/getRandomFromArray.js'
-import removeDuplicatesFromArray from './utils/removeDuplicatesFromArray.js'
 import words from './utils/words.js'
 
 // get DOM elements
@@ -59,14 +58,17 @@ function lose() {
 
   inputEl.value = ''
 
-  scores.push(wordCount)
+  if (!scores.includes(wordCount)) {
+    scores.push(wordCount)
+  }
 
   reset()
 
   localStorage.setItem(
     'scores',
-    JSON.stringify(removeDuplicatesFromArray(scores))
+    JSON.stringify(scores)
   )
+
 }
 
 function startTime() {
