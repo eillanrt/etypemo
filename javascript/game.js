@@ -22,13 +22,23 @@ let timeSeconds = 10
 let difficulty = _getRandomFromArray(difficulties)
 let wordCount = 0
 let wordToGuess
+let nthLetter = 0
 
 function updateTime() {
   timeEl.innerText = timeSeconds
 }
 
 function updateWord() {
-  wordEl.innerText = wordToGuess
+  wordEl.innerHTML = ''
+  nthLetter = 0
+
+  for (let i = 0; i < wordToGuess.length; i++) {
+    const letter = wordToGuess[i]
+    const span = document.createElement('span')
+    span.innerText = letter
+    span.id = 'letter-' + i
+    wordEl.appendChild(span)
+  }
 }
 
 function updateDifficulty() {
@@ -67,11 +77,7 @@ function lose() {
 
   reset()
 
-  localStorage.setItem(
-    'scores',
-    JSON.stringify(scores)
-  )
-
+  localStorage.setItem('scores', JSON.stringify(scores))
 }
 
 function startTime() {
@@ -128,7 +134,26 @@ function startGame() {
 }
 
 inputEl.addEventListener('input', (event) => {
-  if (event.target.value.toLowerCase().trim() === wordToGuess.toLowerCase()) {
+  const wordInput = event.target.value.toLowerCase().trim()
+  const letterToGuess = wordToGuess[nthLetter]
+  const letterInput = wordInput[nthLetter]
+
+  if (
+    event.inputType === 'deleteContentBackward' &&
+    letterInput !== letterToGuess
+  ) {
+    const span = document.querySelector('#letter-' + nthLetter)
+    span.classList.remove('correct')
+    nthLetter--
+  }
+
+  if (letterInput === letterToGuess) {
+    const span = document.querySelector('#letter-' + nthLetter)
+    span.classList.add('correct')
+    nthLetter++
+  }
+
+  if (wordInput === wordToGuess.toLowerCase()) {
     nextWord()
   }
 })

@@ -125,6 +125,10 @@ header {
   font-family: 'Lexend', sans-serif;
 }
 
+#word-guess > span.correct {
+  color: #00ff00;
+}
+
 #word-input-wrap {
   width: 100%;
 }
