@@ -16,6 +16,7 @@ const modalP = document.querySelector('#start-game-prompt p')
 
 const scores = JSON.parse(localStorage.getItem('scores')) || [0]
 const difficulties = ['Easy', 'Moderate', 'Hard']
+let bestScore = Math.max(...scores) || 0
 
 let interval = null
 let timeSeconds = 10
@@ -48,6 +49,9 @@ function updateDifficulty() {
 
 function updateWordCount() {
   wordCountEl.innerText = 'Word count: ' + wordCount
+  if (wordCount > bestScore) {
+    bestScoreEl.innerText = 'Best: ' + wordCount
+  }
 }
 
 function resetInterval() {
@@ -147,7 +151,13 @@ inputEl.addEventListener('input', (event) => {
     if (wordToGuess.startsWith(wordInput) && wordInput !== wordInputCorrect) {
       console.info('A correct letter in a proper order was erased')
       wordInputCorrect = wordInputCorrect.slice(0, -1)
-      prevSpan.classList.remove('correct')
+
+      try {
+        prevSpan.classList.add('correct')
+      } catch (err) {
+        // Do nothing...
+        // console.error('Error: ', err)
+      }
       nthLetter--
     }
   } else {
