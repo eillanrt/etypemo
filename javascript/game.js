@@ -49,7 +49,7 @@ function updateDifficulty() {
 
 function updateWordCount() {
   wordCountEl.innerText = 'Word count: ' + wordCount
-  if (wordCount > bestScore) {
+  if (wordCount > Math.max(...scores)) {
     bestScoreEl.innerText = 'Best: ' + wordCount
   }
 }
@@ -161,7 +161,7 @@ inputEl.addEventListener('input', (event) => {
       nthLetter--
     }
   } else {
-    if (letterToGuess == letterInput) {
+    if (letterToGuess === letterInput) {
       try {
         span.classList.add('correct')
       } catch (err) {
