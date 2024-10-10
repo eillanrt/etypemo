@@ -153,7 +153,7 @@ inputEl.addEventListener('input', (event) => {
       wordInputCorrect = wordInputCorrect.slice(0, -1)
 
       try {
-        prevSpan.classList.add('correct')
+        prevSpan.classList.remove('correct')
       } catch (err) {
         // Do nothing...
         // console.error('Error: ', err)
