@@ -16,7 +16,6 @@ const modalP = document.querySelector('#start-game-prompt p')
 
 const scores = JSON.parse(localStorage.getItem('scores')) || [0]
 const difficulties = ['Easy', 'Moderate', 'Hard']
-let bestScore = Math.max(...scores) || 0
 
 let interval = null
 let timeSeconds = 10
