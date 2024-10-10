@@ -152,7 +152,13 @@ inputEl.addEventListener('input', (event) => {
     }
   } else {
     if (letterToGuess == letterInput) {
-      span.classList.add('correct')
+      try {
+        span.classList.add('correct')
+      } catch (err) {
+        // Do nothing...
+        // console.error('Error: ', err)
+      }
+
       nthLetter++
       wordInputCorrect = wordInput
     }
