@@ -22,7 +22,8 @@ let timeSeconds = 10
 let difficulty = _getRandomFromArray(difficulties)
 let wordCount = 0
 let wordToGuess
-let nthLetter = 0
+let nthLetter = 1
+let wordInputCorrect = ''
 
 function updateTime() {
   timeEl.innerText = timeSeconds
@@ -30,13 +31,13 @@ function updateTime() {
 
 function updateWord() {
   wordEl.innerHTML = ''
-  nthLetter = 0
+  nthLetter = 1
 
   for (let i = 0; i < wordToGuess.length; i++) {
     const letter = wordToGuess[i]
     const span = document.createElement('span')
     span.innerText = letter
-    span.id = 'letter-' + i
+    span.id = 'letter-' + (i + 1)
     wordEl.appendChild(span)
   }
 }
@@ -59,6 +60,7 @@ function resetInterval() {
 function reset() {
   wordCount = 0
   timeSeconds = 11
+  nthLetter = 1
   difficulty = 'Easy'
   updateWordCount()
 }
@@ -135,22 +137,25 @@ function startGame() {
 
 inputEl.addEventListener('input', (event) => {
   const wordInput = event.target.value.toLowerCase().trim()
-  const letterToGuess = wordToGuess[nthLetter]
-  const letterInput = wordInput[nthLetter]
+  const letterToGuess = wordToGuess[nthLetter - 1]
+  const letterInput = wordInput[nthLetter - 1]
 
-  if (
-    event.inputType === 'deleteContentBackward' &&
-    letterInput !== letterToGuess
-  ) {
-    const span = document.querySelector('#letter-' + nthLetter)
-    span.classList.remove('correct')
-    nthLetter--
-  }
+  const span = document.querySelector('#letter-' + nthLetter)
+  const prevSpan = document.querySelector('#letter-' + (nthLetter - 1))
 
-  if (letterInput === letterToGuess) {
-    const span = document.querySelector('#letter-' + nthLetter)
-    span.classList.add('correct')
-    nthLetter++
+  if (event.inputType === 'deleteContentBackward') {
+    if (wordToGuess.startsWith(wordInput) && wordInput !== wordInputCorrect) {
+      console.info('A correct letter in a proper order was erased')
+      wordInputCorrect = wordInputCorrect.slice(0, -1)
+      prevSpan.classList.remove('correct')
+      nthLetter--
+    }
+  } else {
+    if (letterToGuess == letterInput) {
+      span.classList.add('correct')
+      nthLetter++
+      wordInputCorrect = wordInput
+    }
   }
 
   if (wordInput === wordToGuess.toLowerCase()) {
