@@ -151,22 +151,13 @@ inputEl.addEventListener('input', (event) => {
       console.info('A correct letter in a proper order was erased')
       wordInputCorrect = wordInputCorrect.slice(0, -1)
 
-      try {
-        prevSpan.classList.remove('correct')
-      } catch (err) {
-        // Do nothing...
-        // console.error('Error: ', err)
-      }
+      prevSpan?.classList.remove('correct')
+
       nthLetter--
     }
   } else {
     if (letterToGuess === letterInput) {
-      try {
-        span.classList.add('correct')
-      } catch (err) {
-        // Do nothing...
-        // console.error('Error: ', err)
-      }
+      span?.classList.add('correct')
 
       nthLetter++
       wordInputCorrect = wordInput
