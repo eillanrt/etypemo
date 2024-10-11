@@ -164,7 +164,7 @@ inputEl.addEventListener('input', (event) => {
     }
   }
 
-  if (wordInput === wordToGuess.toLowerCase()) {
+  if (wordInput === wordToGuess) {
     nextWord()
   }
 })
