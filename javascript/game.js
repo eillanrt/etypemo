@@ -14,7 +14,7 @@ const wordCountEl = document.querySelector('#word-count')
 const modal = document.querySelector('#start-game-prompt')
 const modalP = document.querySelector('#start-game-prompt p')
 
-const scores = JSON.parse(localStorage.getItem('scores')) || [0]
+const scores = JSON.parse(localStorage.getItem('etype-mo-scores')) || [0]
 const difficulties = ['Easy', 'Moderate', 'Hard']
 
 let interval = null
@@ -82,7 +82,7 @@ function lose() {
 
   reset()
 
-  localStorage.setItem('scores', JSON.stringify(scores))
+  localStorage.setItem('etype-mo-scores', JSON.stringify(scores))
 }
 
 function startTime() {
