@@ -1,4 +1,4 @@
-import startGame from './javascript/game.js'
+import startGame from './game.js'
 ;(function () {
   const startModal = document.querySelector('#start-game-prompt')
   startModal.style.display = 'block'
