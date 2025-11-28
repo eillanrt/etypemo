@@ -6,7 +6,7 @@ A simple game for your browser.
 
 You can either download this repository as zip or clone it using git, run the index.html on localhost and you're ready to go! Or you could also play the demo below!
 
-## [PLAY DEMO](https://eillanrt.github.io/etypemo)
+## [PLAY DEMO](https://etypemo.vercel.app)
 
 ## Screenshots
 
