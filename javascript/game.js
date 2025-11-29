@@ -145,7 +145,7 @@ inputEl.addEventListener('input', (event) => {
 
   if (event.inputType === 'deleteContentBackward') {
     if (wordToGuess.startsWith(wordInput) && wordInput !== wordInputCorrect) {
-      console.info('A correct letter in a proper order was erased')
+   
       wordInputCorrect = wordInputCorrect.slice(0, -1)
 
       prevSpan?.classList.remove('correct')
