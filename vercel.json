@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
+    { "source": "/dist/(.*)", "destination": "/dist/$1" },
     { "source": "/(.*)", "destination": "/$1" }
   ]
 }
