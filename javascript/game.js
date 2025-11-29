@@ -1,8 +1,5 @@
 import words from './utils/words.js'
-
-function _getRandomFromArray(array) {
-  return array[Math.floor(Math.random() * array.length)]
-}
+import { _getRandomFromArray } from './utils/getRandomFromArray.js'
 
 // get DOM elements
 const wordEl = document.querySelector('#word-guess')
