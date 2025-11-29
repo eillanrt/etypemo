@@ -61,4 +61,4 @@ const words = {
   ],
 }
 
-export default words
+export { words }

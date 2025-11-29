@@ -1,4 +1,4 @@
-import words from './utils/words.js'
+import { words } from './utils/words.js'
 import { _getRandomFromArray } from './utils/getRandomFromArray.js'
 
 // get DOM elements
@@ -145,7 +145,6 @@ inputEl.addEventListener('input', (event) => {
 
   if (event.inputType === 'deleteContentBackward') {
     if (wordToGuess.startsWith(wordInput) && wordInput !== wordInputCorrect) {
-   
       wordInputCorrect = wordInputCorrect.slice(0, -1)
 
       prevSpan?.classList.remove('correct')
@@ -166,4 +165,4 @@ inputEl.addEventListener('input', (event) => {
   }
 })
 
-export default startGame
+export { startGame }
