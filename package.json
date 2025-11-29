@@ -11,9 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/eillanrt/etypemo.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["Typing game"],
+  "author": "Allan Robert Tan",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/eillanrt/etypemo/issues"
   },
