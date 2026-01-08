@@ -8,6 +8,9 @@ You can either download this repository as zip or clone it using git, run the in
 
 ## [PLAY DEMO](https://etypemo.vercel.app)
 
+## Modify
+If you want to modify the code for game logic, make sure to bundle it first!
+
 ## Screenshots
 
 ## ![Screenshot 1](assets/screenshots/Screenshot1.png)
